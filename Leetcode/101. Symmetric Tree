@@ -1,0 +1,29 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    
+    var symmetric=function(lroot,rroot){
+        if(!lroot && !rroot)
+            return true;
+        if(!lroot || !rroot)
+            return false;
+        if(lroot.val!==rroot.val)
+            return false;
+        
+        var l=symmetric(lroot.left, rroot.right);
+        var r=symmetric(lroot.right, rroot.left);
+        return l && r;
+    }
+    return symmetric(root.left,root.right);
+    
+};
