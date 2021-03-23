@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} target
+ * @return {number}
+ */
+var closestValue = function(root, target) {
+    let minDiff = Infinity;
+    let closest = null;
+    dfs(root);
+    return closest;
+    
+    function dfs(root) {
+        if (!root) return;
+        let diff = Math.abs(root.val - target);
+        if (minDiff > diff) {
+            minDiff = diff;
+            closest = root.val;
+        }
+        dfs(root.left);
+        dfs(root.right);
+    
+    }
+    // Time Complexity: 0(N), we visit every node exactly once
+    // Space Complexity: 0(H), call stack can go as deep as height of tree
+};
