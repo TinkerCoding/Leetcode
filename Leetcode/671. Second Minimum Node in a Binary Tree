@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var findSecondMinimumValue = function(root) {
+    if(!root) return -1;
+    let min = Infinity;
+    let premin = -1;
+    
+    let traverse = (node) => {
+        if(!node) return;
+        
+        if(node.val < min){
+            premin = min;
+            min =node.val
+        } else if(node.val > min) {
+            premin = premin < node.val ? premin: node.val
+        }
+        traverse(node.left)
+        traverse(node.right)
+        
+    }
+    traverse(root)
+    return premin == Infinity ? -1 : premin
+};
