@@ -1,0 +1,55 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {TreeNode}
+ */
+var mergeTrees = function(root1, root2) {
+    
+    if(root2 ===null){
+        root2 = root1;
+    }
+    
+    let queueOfFirst = new Array;
+    queueOfFirst.push(root1);
+    
+    let queueOfSecond = new Array;
+    queueOfSecond.push(root2);
+    
+    while(queueOfFirst.length > 0){
+        let nodeFirstQueue = queueOfFirst.shift();
+        let nodeSecondQueue = queueOfSecond.shift();
+        if(nodeFirstQueue ===null){
+            continue;
+        }
+        //values
+        if(nodeSecondQueue !== null && nodeFirstQueue!==null){
+            if(nodeSecondQueue !== nodeFirstQueue){
+                nodeSecondQueue.val += nodeFirstQueue.val;
+            }
+            
+            if(nodeSecondQueue.left === null){
+                nodeSecondQueue.left = nodeFirstQueue.left;
+            }
+            
+            if(nodeSecondQueue.right === null){
+                nodeSecondQueue.right = nodeFirstQueue.right;
+            }
+        }
+        
+        queueOfFirst.push(nodeFirstQueue.left);
+        queueOfFirst.push(nodeFirstQueue.right);
+        queueOfSecond.push(nodeSecondQueue.left)
+        queueOfSecond.push(nodeSecondQueue.right)
+    
+    }
+    
+    return root2
+};
