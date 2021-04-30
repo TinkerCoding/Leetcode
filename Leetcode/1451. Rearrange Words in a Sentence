@@ -1,0 +1,38 @@
+/**
+ * @param {string} text
+ * @return {string}
+ */
+ var arrangeWords = function(text) {
+     //sort the array based on length and keeping the order same if length is same
+     var sortArray = function(s){
+         for (var i=1 ;i<s.length; i++){
+             var temp = s[i];
+             var j = i -1;
+             while (j >= 0 && temp.length < s[j].length{
+                 s[j+1] = s[j];
+                 j--;
+             }
+             s[j+1] = temp;
+         }
+     }
+     //to capitalize First letter 
+     var capitalizeFirstLetter = function (string) {
+         return string.charAt(0).toUpperCase() + string.slice(1);
+     }
+     //convert the string to lowercase from sentence case 
+     text = text.toLowerCase();
+
+     //split the string to form an array of words 
+     var text = text.split(" ");
+
+     //sort the array
+     sortArray(text);
+
+     //join the array to form a string 
+     text = text.join("");
+
+     //convert the string to sentence case 
+     return capitalizeFirstLetter(text);
+
+ };
+ 
