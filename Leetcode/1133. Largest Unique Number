@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var largestUniqueNumber = function(A) {
+    const map = new Map()
+    let max = -Infinity
+    for(let n of A){
+        map.set(n, (map.get(n)||0) + 1)
+    }
+    for(let n of A){
+        if(map.get(n) === 1){
+            max = Math.max(n, max)
+        }
+    }
+    return max !== -Infinity ? max : -1
+};
