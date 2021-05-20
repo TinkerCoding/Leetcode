@@ -1,0 +1,32 @@
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+ var longestCommonPrefix = function(strs) {
+     if(strs.length < 1){
+     return "";
+    };
+    // if only one element, return it
+    if(strs.length === 1){
+    return strs[0];
+    }
+    // Get the first string. Doesn't matter which one. Could have been the last.
+    let currStr = strs[0];
+    // start with the full word, taking off a character each time none of the strings match
+    for(let i = currStr.length; i>=0; i--){
+        let match = 0;
+        for (let j = 1; j < strs.length; j++){
+            if(currStr === strs[j].substring(0, i))
+               match++;
+               }else{
+               constinue;
+               }
+          }
+          if(match ===strs.length - 1){
+          return currStr;
+          }
+          // no match, take off a character and try again
+          currStr = currStr.substring(0, i-1);
+          }
+         };
+         
