@@ -1,0 +1,22 @@
+/**
+* @ param {number[]} nums
+* @return {number}
+*/
+var removeDuplicates = function(nums) {
+    let checker = 0
+     for (let i=0; i < nums.length; i++) {
+     if (nums[i] >nums[checker]) {
+     checker += 1 //set checker = next element
+     // if this element larger than checker, swap this element and next element of checker
+     let temp = nums[i]
+     nums[i] = nums[checker]
+     nums[checker] = temp
+       }
+ }
+ 
+     // finally, keep only element was swapped and delete all tails
+     nums.length = checker + 1
+     return nums.length
+    };
+    
+   
