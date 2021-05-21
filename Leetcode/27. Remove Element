@@ -1,0 +1,17 @@
+/**
+* @param {number[]} nums
+* @param {number} val
+* @return {number}
+*/
+var removeElement = function(nums, val) {
+
+    nums = nums.sort();
+    const left = nums.indexOf(val);
+    
+    if(left > -1) {
+       nums.splice(left, nums.lastIndexOf(val) - left + 1)
+    }
+    
+    return nums.length;
+    };
+    
