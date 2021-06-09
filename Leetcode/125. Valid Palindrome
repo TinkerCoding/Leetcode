@@ -1,0 +1,17 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function(s) {
+    const arr = s.toLowerCase().split('')
+    .filter(char => char >= 'a' && char <= 'z' || char >= '0' && char <= '9');
+    
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while(left <= right) {
+        if (arr[left++] !== arr[right--]) return false;
+    }
+    
+    return arr[left] === arr[right];
+};
