@@ -1,0 +1,34 @@
+
+
+const MinStack = function() {
+    this.minStack = [];
+    this.stack = [];
+};
+
+MinStack.prototype.push = function (x) {
+  if (!this.stack.length) {
+    this.minStack.push(x);
+  } else {
+    if (x < this.minStack[this.minStack.length - 1]) {
+      this.minStack.push(x);
+    } else {
+      this.minStack.push(this.minStack[this.minStack.length - 1]);
+    }
+  }
+  this.stack.push(x);
+};
+
+MinStack.prototype.pop = function () {
+  this.stack.pop();
+  this.minStack.pop();
+};
+
+MinStack.prototype.top = function () {
+  let top = this.stack[this.stack.length - 1];
+  return top;
+};
+
+MinStack.prototype.getMin = function () {
+  let min = this.minStack[this.minStack.length - 1];
+  return min;
+};
