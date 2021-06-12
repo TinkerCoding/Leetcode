@@ -1,0 +1,15 @@
+var strStr = function(haystack, needle) {
+// haystack = "hello", needle = "ll"
+if(!needle) {
+    return 0
+}
+
+let i = 0;
+while(haystack.substring(i, needle.length + i) !== needle && i <= haystack.length) {
+    i++;
+    console.log(i, needle.length + i, haystack.substring(i, needle.length + i))
+}
+return i > haystack.length? -1 : i
+
+
+};
