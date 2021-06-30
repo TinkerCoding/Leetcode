@@ -1,0 +1,23 @@
+var intersect = function(nums1, nums2) {
+
+    const map1 = new Map();
+    const map2 = new Map();
+    
+    nums1.forEach(n=>{
+            map1.set(n,map1.get(n)+1||1)
+        })
+    
+    nums2.forEach(n=>{
+            map2.set(n,map2.get(n)+1||1)
+        })
+    
+    let res=[];
+    
+    for(let [key,value] of map1){
+        while(map2.get(key)>0 && value--){
+            map2.set(key,map2.get(key)-1);
+            res.push(key); 
+        }
+    }
+    return res;
+};
